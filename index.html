@@ -1,7 +1,4 @@
-from pathlib import Path
-import shutil
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fișă de lucru – Înmulțirea cu numere de două cifre | Cred în Educație</title>
@@ -177,15 +174,4 @@ $('#sol').onclick=solve;
 $('#prt').onclick=()=>window.print();
 try{$('#data').valueAsDate=new Date()}catch(e){}
 render();
-</script></body></html>'''
-
-out = Path("/mnt/data/index_facebook.html")
-out.write_text(html, encoding="utf-8")
-
-# Copy the exact uploaded preview image under the filename referenced by og:image.
-source_image = Path("/mnt/data/preview.png")
-image_out = Path("/mnt/data/previzualizare-inmultire.png")
-shutil.copyfile(source_image, image_out)
-
-print(f"Fișier HTML creat: {out}")
-print(f"Imagine pregătită: {image_out}")
+</script></body></html>
