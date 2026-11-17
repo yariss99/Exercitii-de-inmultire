@@ -1,7 +1,28 @@
-<!DOCTYPE html>
+from pathlib import Path
+import shutil
+
+html = r'''<!DOCTYPE html>
 <html lang="ro"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fișă interactivă – Înmulțirea cu numere de două cifre</title>
+<title>Fișă de lucru – Înmulțirea cu numere de două cifre | Cred în Educație</title>
+
+<!-- Metadate pentru previzualizarea distribuiri pe Facebook și alte platforme -->
+<meta name="description" content="Exersează înmulțirea cu numere de două cifre! Alege nivelul de dificultate, rezolvă produsele parțiale și verifică imediat răspunsurile.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:site_name" content="Cred în Educație">
+<meta property="og:title" content="Fișă de lucru – Înmulțirea cu numere de două cifre">
+<meta property="og:description" content="Calculează produsele parțiale, apoi rezultatul final. Alege exerciții fără trecere peste ordin, cu trecere peste ordin sau în mod mixt.">
+<meta property="og:url" content="https://yariss99.github.io/Exercitii-de-inmultire/">
+<meta property="og:image" content="https://yariss99.github.io/Exercitii-de-inmultire/previzualizare-inmultire.png">
+<meta property="og:image:secure_url" content="https://yariss99.github.io/Exercitii-de-inmultire/previzualizare-inmultire.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Fișă interactivă Cred în Educație – Înmulțirea cu numere de două cifre">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fișă de lucru – Înmulțirea cu numere de două cifre">
+<meta name="twitter:description" content="Exersează înmulțirea pas cu pas și verifică răspunsurile.">
+<meta name="twitter:image" content="https://yariss99.github.io/Exercitii-de-inmultire/previzualizare-inmultire.png">
+
 <style>
 :root{--bg:#fbf7fa;--card:#fff;--ink:#2a1b27;--mut:#7d6677;--pk:#c2188a;--ok:#1f9d55;--bad:#d93a3a;--w:42px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -156,4 +177,15 @@ $('#sol').onclick=solve;
 $('#prt').onclick=()=>window.print();
 try{$('#data').valueAsDate=new Date()}catch(e){}
 render();
-</script></body></html>
+</script></body></html>'''
+
+out = Path("/mnt/data/index_facebook.html")
+out.write_text(html, encoding="utf-8")
+
+# Copy the exact uploaded preview image under the filename referenced by og:image.
+source_image = Path("/mnt/data/preview.png")
+image_out = Path("/mnt/data/previzualizare-inmultire.png")
+shutil.copyfile(source_image, image_out)
+
+print(f"Fișier HTML creat: {out}")
+print(f"Imagine pregătită: {image_out}")
